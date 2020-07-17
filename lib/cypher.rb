@@ -5,11 +5,12 @@ class Caesars_Cypher
   def cypher(text, num)
     len =  text.length 
     enc = ""
-    num = 0 if num.abs == 26 || num%26 == 0
-    until num >= -26 || num < 26
-      puts num
-      num += 26 if num < -26
-      num -= 26 if num > 26
+    num = 0 if num.abs == 26 || num % 26 == 0
+    if num > 26
+      num -= 26 until num < 26
+    end
+    if num < -26
+      num += 26 until num > -26
     end
     puts num
     len.times do |i|
@@ -40,4 +41,4 @@ class Caesars_Cypher
 end
 
 cy = Caesars_Cypher.new
-puts cy.cypher("a",-26)
+puts cy.cypher("a",2)
